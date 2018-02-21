@@ -7,3 +7,5 @@ On the imaginary papers of GitHub training
 
 #Intro
 I am lagging behind because I am taking notes.
+
+Now I am adding a citation to Pedro Picapiedra, because I don't want to think much while I take notes.
