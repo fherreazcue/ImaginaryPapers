@@ -16,3 +16,7 @@ Jhon Cuerdas is adding stuff to my file... but on his own branch... I wont be ab
 
 #Conclusions
 I am good at this...
+
+#Figures
+-Fig 1
+-Fig 2
