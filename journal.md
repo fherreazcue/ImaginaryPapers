@@ -13,3 +13,6 @@ And now I am edditing to add the other citation, to El Gato con BOtas.
 
 #Method
 Jhon Cuerdas is adding stuff to my file... but on his own branch... I wont be able to see this in master, until it is merged.
+
+#Conclusions
+I am good at this...
