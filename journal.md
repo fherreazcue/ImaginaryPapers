@@ -1,9 +1,9 @@
 # Authors
 Francisco Herrerias
-Juan Cuerdas
+Jhon Cuerdas
 
 # Title
-On the imaginary papers of GitHub training
+On the imaginary papers of GitHub training with my imaginary friend Jhon
 
 #Intro
 I am lagging behind because I am taking notes.
