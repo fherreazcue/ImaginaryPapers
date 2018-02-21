@@ -1,5 +1,5 @@
 # Authors
-Francisco Herrerias
+Francisco Herrerias Azcue
 
 # Title
 On the imaginary papers of GitHub training
