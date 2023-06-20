@@ -26,10 +26,13 @@ jobs:
           echo "The string is: ${{ env.MY_STRING }}"
 
   online_example_output:
-    name: test strings
+    name: generate_output
     runs-on: ubuntu-latest
+    outputs:
+      MY_STRING: ${{ steps.my_string.outputs.MY_STRING }}
     steps:
       - name: create string
+        id: my_string
         run: |
           MY_STRING=$(cat << EOF
           first line
@@ -37,14 +40,15 @@ jobs:
           third line
           EOF
           )
+          echo "$MY_STRING"
+          echo "Now exporting to output:"
           echo "MY_STRING<<EOF" >> $GITHUB_OUTPUT
           echo "$MY_STRING" >> $GITHUB_OUTPUT
           echo "EOF" >> $GITHUB_OUTPUT
-        id: my_string
 
   online_example_output_2:
     needs: online_example_output
-    name: display string
+    name: display output
     runs-on: ubuntu-latest
     steps:
       - name: display string
