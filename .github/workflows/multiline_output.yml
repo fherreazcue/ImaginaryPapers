@@ -1,0 +1,38 @@
+on:
+  workflow_dispatch:
+  push:
+    branch:
+      - '*'
+
+jobs:
+  release-info:
+    runs-on: ubuntu-latest
+    outputs:
+      binary_download_links: ${{ steps.get_binary_download_links.outputs.binary_download_links }}
+    steps:
+
+      - name: Release info
+        id: get_binary_download_links
+        run: |
+          binaryYaml=$(python3 -c "
+          from pathlib import Path
+          out_yaml = ''
+          for i in ['win.exe', 'macOS', 'linux', 'win-dir.zip', 'macOS-dir.zip', 'linux-dir.zip']:
+            exe_name = 'hpcflow-dummy_tag-' + i
+            url = 'https://github.com/hpcflow/hpcflow-new/releases/download/dummy_tag/' + exe_name
+            out_yaml += exe_name + ': ' + url + '\n'
+          print(out_yaml)
+          ")
+          # Save multiline output
+          EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
+          echo "binary_download_links<<$EOF" >> $GITHUB_OUTPUT
+          $binaryYaml >> $GITHUB_OUTPUT
+          echo "$EOF" >> $GITHUB_OUTPUT
+
+  print-output:
+    needs: release-info
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print output
+        run: |
+          echo "The string is: ${{ needs.release-info.outputs.binary_download_links }}"
