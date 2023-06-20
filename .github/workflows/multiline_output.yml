@@ -63,7 +63,7 @@ jobs:
       - name: Release info
         id: get_binary_download_links
         run: |
-          BDL=$(python3 -c "
+          binaryYaml=$(python3 -c "
           from pathlib import Path
           out_yaml = ''
           for i in ['win.exe', 'macOS', 'linux', 'win-dir.zip', 'macOS-dir.zip', 'linux-dir.zip']:
@@ -81,7 +81,7 @@ jobs:
           )
           EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
           echo "binary_download_links<<$EOF" >> $GITHUB_OUTPUT
-          echo "$BDL" >> $GITHUB_OUTPUT
+          echo "$binaryYaml" >> $GITHUB_OUTPUT
           echo "$EOF" >> $GITHUB_OUTPUT
 
   print-output:
