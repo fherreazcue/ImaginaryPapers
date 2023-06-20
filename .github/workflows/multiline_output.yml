@@ -74,13 +74,9 @@ jobs:
           ")
           # Save multiline output
           EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
-          echo "$EOF"
-          echo "binary_download_links<<$EOF"
-          echo "$binaryYaml"
-          echo "$EOF"
-          echo "binary_download_links<<$EOF" >> "$GITHUB_OUTPUT"
-          "$binaryYaml" >> "$GITHUB_OUTPUT"
-          echo "$EOF" >> "$GITHUB_OUTPUT"
+          echo "binary_download_links<<$EOF" >> $GITHUB_OUTPUT
+          "$binaryYaml" >> $GITHUB_OUTPUT
+          echo "$EOF" >> $GITHUB_OUTPUT
 
   print-output:
     needs: release-info
