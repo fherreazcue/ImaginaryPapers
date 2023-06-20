@@ -82,7 +82,7 @@ jobs:
           EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
           echo "binary_download_links<<$EOF" >> $GITHUB_OUTPUT
           echo "$binary_download_links" >> $GITHUB_OUTPUT
-          echo "$binary_download_links" >> $GITHUB_OUTPUT
+          echo "$EOF" >> $GITHUB_OUTPUT
 
   print-output:
     needs: release-info
