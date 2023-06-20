@@ -25,6 +25,32 @@ jobs:
         run: |
           echo "The string is: ${{ env.MY_STRING }}"
 
+  online_example_output:
+    name: test strings
+    runs-on: ubuntu-latest
+    steps:
+      - name: create string
+        run: |
+          MY_STRING=$(cat << EOF
+          first line
+          second line
+          third line
+          EOF
+          )
+          echo "MY_STRING<<EOF" >> $GITHUB_OUTPUT
+          echo "$MY_STRING" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+        id: my_string
+
+  online_example_output_2:
+    needs: online_example_output
+    name: display string
+    runs-on: ubuntu-latest
+    steps:
+      - name: display string
+        run: |
+          echo "The string is: ${{ needs.online_example_output.outputs.MY_STRING}}"
+
   release-info:
     runs-on: ubuntu-latest
     outputs:
