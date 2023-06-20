@@ -40,11 +40,10 @@ jobs:
           third line
           EOF
           )
-          echo "$MY_STRING"
-          echo "Now exporting to output:"
-          echo "MY_STRING<<EOF" >> $GITHUB_OUTPUT
+          EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
+          echo "MY_STRING<<$EOF" >> $GITHUB_OUTPUT
           echo "$MY_STRING" >> $GITHUB_OUTPUT
-          echo "EOF" >> $GITHUB_OUTPUT
+          echo "$EOF" >> $GITHUB_OUTPUT
 
   online_example_output_2:
     needs: online_example_output
